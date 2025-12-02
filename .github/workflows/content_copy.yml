@@ -33,8 +33,8 @@ jobs:
                 echo "${{ env.prodname }}"
                 set PRODNAME = `grep "prodname" copy_details | cut -d'=' -f2 `
 
-                /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{ $PRODNAME }} --stepping p0 --content_type reset --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
-                /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{ $PRODNAME }} --stepping p0 --content_type func_atom --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
+                /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{ env.prodname }} --stepping p0 --content_type reset --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
+                /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{ env.prodname }} --stepping p0 --content_type func_atom --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
                 git push   origin --delete ${{ github.ref }}
 
                 
