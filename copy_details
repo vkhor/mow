@@ -1,0 +1,5 @@
+stepping=p0
+prodname=rzlcpu
+content_type=reset
+source=abc
+description=a b c
