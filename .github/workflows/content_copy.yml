@@ -28,13 +28,9 @@ jobs:
 
             - name: Copy
               run: |
-                #echo "${{ github.ref }}"
-                #echo "${{ github.ref_name }}"
-                #echo "${{github.triggering_actor}}"
-                #echo "${{ env.prodname }}"
-                echo "${{ steps.get_detail.outputs.prodname }}"
-                echo "${{ steps.get_detail.outputs.stepping }}"
-                echo "${{ steps.get_detail.outputs.source }}"
+                echo "prodname ${{ steps.get_detail.outputs.prodname }}"
+                echo "stepping ${{ steps.get_detail.outputs.stepping }}"
+                echo "source ${{ steps.get_detail.outputs.source }}"
 
                 /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{ steps.get_detail.outputs.prodname }} --stepping ${{ steps.get_detail.outputs.stepping }} --content_type reset --source ${{ steps.get_detail.outputs.source }}
                 /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{ steps.get_detail.outputs.prodname }} --stepping ${{ steps.get_detail.outputs.stepping }} --content_type func_atom --source ${{ steps.get_detail.outputs.source }}
