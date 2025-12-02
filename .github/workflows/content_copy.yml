@@ -15,4 +15,8 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Copy
-              run: /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname rzlc_testing --stepping p0 --content_type reset --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
+              run: | 
+                /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname rzlc_testing --stepping p0 --content_type reset --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
+                /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname rzlc_testing --stepping p0 --content_type func_atom --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
+
+                
