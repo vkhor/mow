@@ -20,6 +20,7 @@ jobs:
             - uses: actions/checkout@v4
         
             - name: Get Details
+              id: get_detail
               run: |
                     set PRODNAME = `grep "prodname" copy_details | cut -d'=' -f2 `
                     echo "prodname=$PRODNAME" >> $GITHUB_OUTPUT
@@ -35,6 +36,8 @@ jobs:
                 echo "$GITHUB_OUTPUT"
                 echo "prodname=`grep "prodname" copy_details | cut -d'=' -f2 `" >> $GITHUB_OUTPUT
                 cat "$GITHUB_OUTPUT"
+                echo "steps.get_detail.outputs.prodname"
+
                 /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{env.prodname}} --stepping p0 --content_type reset --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
                 /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/applications.automation.client-hw.common.pde-mow-scripting.git-latest/bin/content_copy.py --prodname ${{env.prodname}} --stepping p0 --content_type func_atom --source /nfs/site/disks/integ_dfx_wa_14/rzlcn2x/vkhor/mow/my_repo/content/reset
                 git push   origin --delete ${{ github.ref }}
