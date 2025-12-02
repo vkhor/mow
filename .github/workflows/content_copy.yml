@@ -1,5 +1,5 @@
 name: Content Copy
-run-name: Pull Request Generator (User - ${{ github.actor }})
+run-name: Pull Request Generator (User - ${{ github.ref_name }})
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
