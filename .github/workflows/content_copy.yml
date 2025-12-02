@@ -1,0 +1,20 @@
+name: Content Copy
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+    push:
+        branches:
+            - content_copy/**
+
+jobs:
+    copy_content:
+        runs-on: [self-hosted]
+        timeout-minutes: 10
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Copy
+              run: echo "Copyyyyyyyyyyyyy"
+
+
