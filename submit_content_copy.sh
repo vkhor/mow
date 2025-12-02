@@ -22,31 +22,22 @@ done
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
         -stepping)
-            # When -stepping is found ($1), store the NEXT argument ($2)
             STEPPING="$2"
-            # Shift twice: once for the flag, once for the value
             shift 2 
             ;;
         -prodname)
-            # When -stepping is found ($1), store the NEXT argument ($2)
             PRODNAME="$2"
-            # Shift twice: once for the flag, once for the value
             shift 2 
             ;;
         -content_type)
-            # When -stepping is found ($1), store the NEXT argument ($2)
             CONTENT_TYPE="$2"
-            # Shift twice: once for the flag, once for the value
             shift 2 
             ;;
         -source)
-            # When -stepping is found ($1), store the NEXT argument ($2)
             SOURCE="$2"
-            # Shift twice: once for the flag, once for the value
             shift 2 
             ;;
         -description)
-            # Check if the next argument exists before trying to access it
             if [[ -n "$2" ]]; then
                 DESCRIPTION="$2"
                 shift 2 # Shift past the flag and the description text
@@ -56,12 +47,10 @@ while [[ "$#" -gt 0 ]]; do
             fi
             ;;
         -h|--help)
-            # Handle a help flag if needed
             echo "Usage: $0 [-stepping value]"
             exit 0
             ;;
         *)
-            # Handle unknown arguments or general arguments
             echo "Ignoring unknown parameter: $1"
             shift 1
             ;;
@@ -73,4 +62,22 @@ echo "prodname=$PRODNAME"
 echo "content_type=$CONTENT_TYPE"
 echo "source=$SOURCE"
 echo "description=$DESCRIPTION"
+
+#Create a tmp area
+RAND_INT=$RANDOM
+mkdir -p /tmp/mow_$RAND_INT
+cd /tmp/mow_$RAND_INT
+git clone https://github.com/vkhor/mow.git 
+cd mow
+git checkout -b  content_copy/${USER}_${PRODNAME}_${STEPPING}_${CONTENT_TYPE}
+touch copy_details
+echo "stepping=$STEPPING" >> copy_details
+echo "prodname=$PRODNAME" >> copy_details
+echo "content_type=$CONTENT_TYPE" >> copy_details
+echo "source=$SOURCE" >> copy_details
+echo "description=$DESCRIPTION" >> copy_details
+
+git add --all
+git commit -m "commit"
+git push -u origin content_copy/${USER}_${PRODNAME}_${STEPPING}_${CONTENT_TYPE}
 
