@@ -19,7 +19,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
         
-            - name: get_copy_details
+            - name: Get Details
                 run: |
                     PRODNAME = $(grep "prodname" copy_details | cut -d'=' -f2 )
                     echo "prodname=$PRODNAME" >> $GITHUB_ENV
